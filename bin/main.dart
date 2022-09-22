@@ -1,5 +1,13 @@
+import 'dart:io';
+
 import 'package:pubsec_dependecy_sorter/pubsec_dependency_sorter.dart';
 
 void main(List<String> args) {
-  pubsecDependencySorter(args[0]);
+  final String path;
+  if (args.isEmpty) {
+    path = Directory.current.path;
+  } else {
+    path = args[0];
+  }
+  pubsecDependencySorter(path);
 }
