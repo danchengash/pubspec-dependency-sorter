@@ -1,6 +1,6 @@
-name: pubsec_dependecy_sorter
+name: pubspec_dependency_sorter
 version: 0.0.1
-description: A new Flutter package project.
+description: helps sort flutter,dart pubspec.yaml dependecies alphabetically.
 environment: 
   sdk: '>=2.17.0 <3.0.0'
   flutter: '>=1.17.0'

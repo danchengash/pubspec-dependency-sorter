@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:pubsec_dependecy_sorter/pubsec_dependency_sorter.dart';
+import 'package:pubspec_dependency_sorter/pubspec_dependency_sorter.dart';
+
 
 void main(List<String> args) {
   
