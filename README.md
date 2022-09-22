@@ -27,7 +27,7 @@ To use the package run in your flutter/dart directory
 ```dart
    flutter pub run pubsec_dependecy_sorter:main 
 ```
-if your pubspec.yam is located somewhere else use the following command by passing the path of the directory where the pubspec.yam file is located.
+if your pubspec.yam is located somewhere else use the following command by passing the **path of the directory** where the pubspec.yaml file is located.
 ```dart
    flutter pub run pubsec_dependecy_sorter:main PATH-TO-YOUR-DIRECTORY
 ```
