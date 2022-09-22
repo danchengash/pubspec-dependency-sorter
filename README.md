@@ -10,16 +10,16 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-This package helps developer to sort the flutter and dart packages alphabetically, This makes it easier when managing too many packages
+This package helps developer to sort the flutter/dart packages and plugins alphabetically, This makes it easier when managing too many packages and when working with teams
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+[sort dependencies]
+[prevent dependecy conflicts]
 
 ## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Install flutter,dart sdk.
+Add pubsec_dependecy_sorter to your pubsec.yaml
 
 ## Usage
 
@@ -31,7 +31,4 @@ const like = 'sample';
 ```
 
 ## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Feel free to add features,improvemets and fix bugs then create a PR.
