@@ -14,8 +14,9 @@ This package helps developer to sort the flutter/dart packages and plugins alpha
 
 ## Features
 
-[sort dependencies]
-[prevent dependecy conflicts]
+* sort dependencies
+* prevent dependecy conflicts
+* clean up the pubspec.yaml file
 
 ## Getting started
 Install flutter,dart sdk.
@@ -25,11 +26,11 @@ Add pubsec_dependecy_sorter to your pubsec.yaml
 
 To use the package run in your flutter/dart directory
 ```dart
-   flutter pub run pubsec_dependecy_sorter:main 
+   flutter pub run pubspec_dependency_sorter
 ```
 if your pubspec.yam is located somewhere else use the following command by passing the **path of the directory** where the pubspec.yaml file is located.
 ```dart
-   flutter pub run pubsec_dependecy_sorter:main PATH-TO-YOUR-DIRECTORY
+  flutter pub run pubspec_dependency_sorter PATH-TO-YOUR-DIRECTORY
 ```
 
 ## Additional information
