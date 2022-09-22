@@ -10,7 +10,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-This package helps developer to sort the flutter/dart packages and plugins alphabetically, This makes it easier when managing too many packages and when working with teams
+package helps to sort the flutter/dart packages and plugins alphabetically, This makes it easier when managing too many packages and when working with teams
 
 ## Features
 
@@ -24,7 +24,7 @@ Add pubsec_dependecy_sorter to your pubsec.yaml
 
 ## Usage
 
-To use the package run in your flutter/dart directory
+To use the package run in your flutter/dart app root directory
 ```dart
    flutter pub run pubspec_dependency_sorter
 ```
