@@ -23,11 +23,13 @@ Add pubsec_dependecy_sorter to your pubsec.yaml
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+To use the package run in your flutter/dart directory
 ```dart
-const like = 'sample';
+   flutter pub run pubsec_dependecy_sorter:main 
+```
+if your pubspec.yam is located somewhere else use the following command by passing the path of the directory where the pubspec.yam file is located.
+```dart
+   flutter pub run pubsec_dependecy_sorter:main PATH-TO-YOUR-DIRECTORY
 ```
 
 ## Additional information
