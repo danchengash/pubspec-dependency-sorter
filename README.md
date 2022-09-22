@@ -10,7 +10,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-package helps to sort the flutter/dart packages and plugins alphabetically, This makes it easier when managing too many packages and when working with teams
+Package helps to sort the flutter/dart packages and plugins alphabetically, This makes it easier when managing too many packages and when working with teams
 
 ## Features
 
@@ -19,8 +19,11 @@ package helps to sort the flutter/dart packages and plugins alphabetically, This
 * clean up the pubspec.yaml file
 
 ## Getting started
-Install flutter,dart sdk.
-Add pubsec_dependecy_sorter to your pubsec.yaml
+Install flutter or dart sdk then depend on the package.
+```dart
+dev_dependencies:
+  pubspec_dependency_sorter: ^0.0.1
+```
 
 ## Usage
 
@@ -33,7 +36,7 @@ if your pubspec.yam is located somewhere else use the following command by passi
   flutter pub run pubspec_dependency_sorter PATH-TO-YOUR-DIRECTORY
 ```
 ## sample output
-<img width=450px height=300px alt="dependecy_sorter_sample_output" src="https://github.com/Genialngash/pubspec-dependency-sorter/blob/main/images/pubspec%20_dependency_sorter.png"/>
+(https://github.com/Genialngash/pubspec-dependency-sorter/blob/main/images/pubspec%20_dependency_sorter.png)
 
 
 ## Additional information
