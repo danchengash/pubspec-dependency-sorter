@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:logger/logger.dart';
 import 'package:pubspec/pubspec.dart';
 
-pubsecDependencySorter(List<String> args) async {
+main(List<String> args) async {
   var logger = Logger(
     filter: NewFilter(), // log in release and debug mode
     printer: PrettyPrinter(
