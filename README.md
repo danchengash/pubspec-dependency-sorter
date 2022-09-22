@@ -36,7 +36,7 @@ if your pubspec.yam is located somewhere else use the following command by passi
   flutter pub run pubspec_dependency_sorter PATH-TO-YOUR-DIRECTORY
 ```
 ## sample output
-(https://github.com/Genialngash/pubspec-dependency-sorter/blob/main/images/pubspec%20_dependency_sorter.png)
+![dependency_sorter sample output](https://github.com/Genialngash/pubspec-dependency-sorter/blob/main/images/pubspec%20_dependency_sorter.png)
 
 
 ## Additional information
