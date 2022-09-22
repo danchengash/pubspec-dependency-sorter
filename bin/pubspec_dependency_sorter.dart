@@ -68,7 +68,7 @@ main(List<String> args) async {
     await newPubSpec.save(myDirectory);
     logger.v("Saved the changes");
 
-    logger.wtf("Done---< please rate and like the package.>");
+    logger.wtf("Done---< please rate and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
   } catch (e) {
     logger.e(e);
   }
