@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:logger/logger.dart';
 import 'package:pubspec/pubspec.dart';
 
-pubsecDependencySorter(String directory) async {
+pubsecDependencySorter(List<String> args) async {
   var logger = Logger(
     filter: NewFilter(), // log in release and debug mode
     printer: PrettyPrinter(
@@ -20,8 +20,14 @@ pubsecDependencySorter(String directory) async {
 
   logger.w("Starting..");
   try {
+    String path = '';
+    if (args.isEmpty) {
+      path = Directory.current.path;
+    } else {
+      path = args[0];
+    }
     // specify the directory
-    Directory myDirectory = Directory(directory);
+    Directory myDirectory = Directory(path);
 
     // load pubSpec
     var pubSpec = await PubSpec.load(myDirectory);
