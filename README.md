@@ -22,7 +22,7 @@ Package helps to sort the flutter/dart packages and plugins alphabetically, This
 Install flutter or dart sdk then depend on the package.
 ```dart
 dev_dependencies:
-  pubspec_dependency_sorter: ^1.0.2
+  pubspec_dependency_sorter: ^1.0.3
 ```
 
 ## Usage
