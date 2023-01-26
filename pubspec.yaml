@@ -1,11 +1,11 @@
 name: pubspec_dependency_sorter
 version: 0.0.2
 Author: Danche Nganga <ngangadanche@gmail.com>
-homepage: https://github.com/Genialngash/pubspec-dependency-sorter
+homepage: https://github.com/danchengash/pubspec-dependency-sorter
 description: helps sort flutter,dart pubspec.yaml dependecies alphabetically.
 environment: 
   sdk: '>=2.17.0 <3.0.0'
-  flutter: '>=1.17.0'
+  # flutter: '>=1.17.0'
 dependencies: 
   logger: ^1.1.0
   pubspec: ^2.3.0
