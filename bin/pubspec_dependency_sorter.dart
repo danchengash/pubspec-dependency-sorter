@@ -57,7 +57,7 @@ main(List<String> args) async {
         SplayTreeMap<String, DependencyReference>.from(
       dependencyOverrides,
     );
-    logger.i("<<<---- sorted dependency overides.");
+    logger.i("<<<---- sorted dependency overrides.");
     // change the dependencies and dependency overides
     var newPubSpec = pubSpec.copy(
         dependencies: sortDependenciesByValue,
@@ -66,9 +66,10 @@ main(List<String> args) async {
 
     // save it
     await newPubSpec.save(myDirectory);
-    logger.v("Saved the changes");
+    logger.i("Saved the changes");
 
-    logger.wtf("Done---< please star and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
+    logger.i(
+        "Done---< please star and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
   } catch (e) {
     logger.e(e);
   }
