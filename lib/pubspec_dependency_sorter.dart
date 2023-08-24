@@ -66,9 +66,10 @@ pubsecDependencySorter({required List<String> args}) async {
 
     // save it
     await newPubSpec.save(myDirectory);
-    logger.v("Saved the changes");
+    logger.i("Saved the changes");
 
-    logger.wtf("Done---< please star and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
+    logger.i(
+        "Done---< please star and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
   } catch (e) {
     logger.e(e);
   }
