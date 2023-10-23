@@ -29,11 +29,11 @@ dev_dependencies:
 
 To use the package run in your flutter/dart app root directory
 ```dart
-   flutter pub run pubspec_dependency_sorter
+   dart run pubspec_dependency_sorter
 ```
 if your pubspec.yam is located somewhere else use the following command by passing the **path of the directory** where the pubspec.yaml file is located.
 ```dart
-  flutter pub run pubspec_dependency_sorter PATH-TO-YOUR-DIRECTORY
+  dart run pubspec_dependency_sorter PATH-TO-YOUR-DIRECTORY
 ```
 ## sample output
 ![dependency_sorter sample output](https://github.com/Genialngash/pubspec-dependency-sorter/blob/main/images/pubspec%20_dependency_sorter.png)
