@@ -1,9 +1,9 @@
 // Copyright (c) 2022, Danche Nganga. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
-import 'dart:collection';
 import 'dart:io';
 import 'package:logger/logger.dart';
 import 'package:pubspec/pubspec.dart';
+import 'package:yaml_writer/yaml_writer.dart';
 
 main(List<String> args) async {
   var logger = Logger(
@@ -33,39 +33,43 @@ main(List<String> args) async {
     var pubSpec = await PubSpec.load(myDirectory);
     //get the dependencies
     Map<String, DependencyReference> dependencies = pubSpec.dependencies;
-    //get the dev dependency overide
+    //get the dev dependency override
     Map<String, DependencyReference> devDependencies = pubSpec.devDependencies;
-    //get the dependency overide
+    //get the dependency override
     Map<String, DependencyReference> dependencyOverrides =
         pubSpec.dependencyOverrides;
-    //sort dependency
-    var sortDependenciesByValue =
-        SplayTreeMap<String, DependencyReference>.from(
-      dependencies,
-    );
-    logger.i("<<<--- sorted dependecies.");
+
+    // sort the dependencies
+    var sortedDependencies = _sortDependencies(dependencies);
+    logger.i("<<<--- sorted dependencies.");
 
     //sort dev dependency
-    var sortDevDependenciesByValue =
-        SplayTreeMap<String, DependencyReference>.from(
-      devDependencies,
-    );
-    logger.i("<<<--- sorted dev dependecies.");
+    var sortedDevDependencies = _sortDependencies(devDependencies);
+    logger.i("<<<--- sorted dev dependencies.");
 
-    //sort dependency overide
-    var sortDependencOveridedByValue =
-        SplayTreeMap<String, DependencyReference>.from(
-      dependencyOverrides,
-    );
+    //sort dependency override
+    var sortedDependencyOverrides = _sortDependencies(dependencyOverrides);
     logger.i("<<<---- sorted dependency overrides.");
-    // change the dependencies and dependency overides
-    var newPubSpec = pubSpec.copy(
-        dependencies: sortDependenciesByValue,
-        dependencyOverrides: sortDependencOveridedByValue,
-        devDependencies: sortDevDependenciesByValue);
+    // change the dependencies and dependency overrides
 
-    // save it
-    await newPubSpec.save(myDirectory);
+    // logger.i("Sorted dependencies: ${sortDependenciesByKey.toString()}");
+    var newPubSpec = pubSpec.copy(
+      dependencies: sortedDependencies,
+      dependencyOverrides: sortedDependencyOverrides,
+      devDependencies: sortedDevDependencies,
+      unParsedYaml: pubSpec.unParsedYaml,
+    );
+
+    // save it with yaml writer
+    var yamlWriter = YamlWriter(allowUnquotedStrings: true);
+
+    // Convert the pubspec to a yaml document
+    var yamlDoc = yamlWriter.write(newPubSpec.toJson());
+
+    // Write the yaml to the pubspec.yaml file
+    File file = File("${myDirectory.path}/pubspec.yaml");
+    await file.writeAsString(yamlDoc);
+
     logger.i("Saved the changes");
 
     logger.i(
@@ -73,6 +77,22 @@ main(List<String> args) async {
   } catch (e) {
     logger.e(e);
   }
+}
+
+Map<String, DependencyReference> _sortDependencies(
+    Map<String, DependencyReference> dependencies) {
+  // Convert the dependencies to a list and sort them
+  var sortedDependencies = dependencies.keys.toList();
+  sortedDependencies.sort((a, b) {
+    return a.toString().compareTo(b.toString());
+  });
+
+  // sort the dependencies
+  Map<String, DependencyReference> sortDependenciesByKey = {};
+  for (var key in sortedDependencies) {
+    sortDependenciesByKey[key] = dependencies[key]!;
+  }
+  return sortDependenciesByKey;
 }
 
 class NewFilter extends LogFilter {
