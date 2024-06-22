@@ -26,52 +26,37 @@ main(List<String> args) async {
     } else {
       path = args[0];
     }
-    // specify the directory
-    Directory myDirectory = Directory(path);
 
-    // load pubSpec
+    Directory myDirectory = Directory(path);
     var pubSpec = await PubSpec.load(myDirectory);
-    //get the dependencies
+
     Map<String, DependencyReference> dependencies = pubSpec.dependencies;
-    //get the dev dependency override
     Map<String, DependencyReference> devDependencies = pubSpec.devDependencies;
-    //get the dependency override
     Map<String, DependencyReference> dependencyOverrides =
         pubSpec.dependencyOverrides;
 
-    // sort the dependencies
     var sortedDependencies = _sortDependencies(dependencies);
     logger.i("<<<--- sorted dependencies.");
-
-    //sort dev dependency
     var sortedDevDependencies = _sortDependencies(devDependencies);
     logger.i("<<<--- sorted dev dependencies.");
-
-    //sort dependency override
     var sortedDependencyOverrides = _sortDependencies(dependencyOverrides);
     logger.i("<<<---- sorted dependency overrides.");
-    // change the dependencies and dependency overrides
 
-    // logger.i("Sorted dependencies: ${sortDependenciesByKey.toString()}");
     var newPubSpec = pubSpec.copy(
       dependencies: sortedDependencies,
       dependencyOverrides: sortedDependencyOverrides,
       devDependencies: sortedDevDependencies,
-      unParsedYaml: pubSpec.unParsedYaml,
     );
 
-    // save it with yaml writer
     var yamlWriter = YamlWriter(allowUnquotedStrings: true);
-
-    // Convert the pubspec to a yaml document
     var yamlDoc = yamlWriter.write(newPubSpec.toJson());
 
-    // Write the yaml to the pubspec.yaml file
+    var formattedYamlDoc = _formatYamlWithSpaces(yamlDoc);
+
     File file = File("${myDirectory.path}/pubspec.yaml");
-    await file.writeAsString(yamlDoc);
+    await file.writeAsString(formattedYamlDoc);
 
     logger.i("Saved the changes");
-
     logger.i(
         "Done---< please star and like the package. https://github.com/Genialngash/pubspec-dependency-sorter >");
   } catch (e) {
@@ -81,18 +66,34 @@ main(List<String> args) async {
 
 Map<String, DependencyReference> _sortDependencies(
     Map<String, DependencyReference> dependencies) {
-  // Convert the dependencies to a list and sort them
   var sortedDependencies = dependencies.keys.toList();
   sortedDependencies.sort((a, b) {
     return a.toString().compareTo(b.toString());
   });
 
-  // sort the dependencies
   Map<String, DependencyReference> sortDependenciesByKey = {};
   for (var key in sortedDependencies) {
     sortDependenciesByKey[key] = dependencies[key]!;
   }
   return sortDependenciesByKey;
+}
+
+String _formatYamlWithSpaces(String yamlDoc) {
+  // Split the YAML document into lines
+  var lines = yamlDoc.split('\n');
+  // Initialize a list to hold the formatted lines
+  var formattedLines = <String>[];
+  // Add a blank line after each top-level key
+  for (var line in lines) {
+    // Check if the line contains a top-level key (starts without spaces)
+    if (line.isNotEmpty && !line.startsWith(' ')) {
+      formattedLines.add(''); // Add a blank line
+    }
+
+    formattedLines.add(line);
+  }
+  // Join the formatted lines back into a single string
+  return formattedLines.join('\n');
 }
 
 class NewFilter extends LogFilter {
