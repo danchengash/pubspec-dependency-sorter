@@ -1,5 +1,5 @@
 name: pubspec_dependency_sorter
-version: 1.0.5
+version: 1.0.6
 Author: Danche Nganga <ngangadanche@gmail.com>
 homepage: https://github.com/danchengash/pubspec-dependency-sorter
 description: helps sort flutter,dart pubspec.yaml dependecies alphabetically.
